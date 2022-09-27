@@ -1,0 +1,56 @@
+ <nav class="blue-darken4" >
+    <div class="nav-wrapper" style="margin-left: -10px; background-color:rgb(111,137,160)">
+      <a href="/" class="brand-logo" style="margin-left: 10px;">Todo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+{{#if User}}
+{{#if isAdmin}}
+        {{#if isAdminEvent}}
+        <li class="active"><a href="/admin_events">Admin_Event</a></li>
+        {{else}}
+        <li ><a href="/admin_events">Admin_Event</a></li>
+        {{/if}}
+
+        {{#if isAdminUser}}
+        <li class="active"><a href="/admin_users">Admin_Users</a></li>
+        {{else}}
+        <li ><a href="/admin_users">Admin_Users</a></li>
+        {{/if}}
+{{/if}}
+
+        {{#if isCreate}}
+        <li class="active"><a href="/create">Create</a></li>
+        {{else}}
+        <li ><a href="/create">Create</a></li>
+        {{/if}}
+
+        {{#if isEvents}}
+        <li class="active"><a href="/events">Events</a></li>
+        {{else}}
+        <li ><a href="/events">Events</a></li>
+        {{/if}}
+        {{#if isMyEvents}}
+        <li class="active"><a href="/myevents">My Events</a></li>
+        {{else}}
+        <li ><a href="/myevents">My Events</a></li>
+        {{/if}}
+{{/if}}
+        {{#if isLogin}}
+        <li class="active"><a href="/login">Login</a></li>
+        {{else}}
+        <li ><a href="/login">Login</a></li>
+        {{/if}}
+
+        {{#if isRegister}}
+        <li class="active"><a href="/register">Register</a></li>
+        {{else}}
+        <li ><a href="/register">Register</a></li>
+        {{/if}}
+
+
+ 
+
+
+      </ul>
+    </div>
+  </nav>

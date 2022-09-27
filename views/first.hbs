@@ -1,0 +1,59 @@
+<script>
+    let d;
+    function choose(obj) {
+        
+        let nameOfGroup = obj.options[obj.selectedIndex].value;
+        let curr=document.getElementById("my");
+        let option
+        let oldUser=document.getElementsByClassName("myUser");
+        let m=oldUser.length
+        for(let a=0;a<m;a++){
+            oldUser[0].remove();
+        }
+        {{#each groups}}
+         d="{{Name}}"
+        if(d==nameOfGroup)
+        {
+            
+            {{#each Users}}
+               option = document.createElement('option');
+               option.value = "{{userName}}";
+               option.className="myUser"
+               option.innerHTML = "{{userName}}";
+               curr.after(option);
+               //console.log("{{userName}}");
+            {{/each}} 
+        }   
+        {{/each}}
+            
+    }
+    function move(){
+         localStorage.clear();
+        var a1=group.options[group.selectedIndex].value;        
+        var a2=nameR.options[nameR.selectedIndex].value;
+        var Uname = {'group':a1, 'name':a2, 'number': nameR.selectedIndex};
+        localStorage.setItem("object_name2",JSON.stringify(Uname));
+        
+    }
+</script>
+<form action="/first" method="POST">
+    <h2>Выбор пользователя</h2>
+    <div class="input-field col s12">
+        <select style="display: inline; width: 50%" id="group" onchange="choose(this)">
+            <option value="-" disabled selected>Выберите интересующую вас группу</option>
+            {{#each groups}}
+            <option value="{{Name}}">{{Name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <br>
+    <div class="input-field col s12">
+        <select  id="nameR" style="display: inline; width: 50%" >
+            <option value="-" disabled selected id="my">Найдите себя в списке</option>
+        </select>
+    </div>
+     <button class="btn waves-effect cyan darken-1" onclick="move()" type="submit" name="action">Начать тест
+                <i class="material-icons">arrow_forward</i>
+            </button>
+
+</form>

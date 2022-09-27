@@ -1,0 +1,13 @@
+<form action="/admin_users" method="POST">
+  
+                                          <ul class="collection with-header" name="hhop">
+        <li class="collection-header" value=""><h6>Список пользователей</h6></li>
+      {{#each users}}
+        <li class="collection-item"><div>{{name}}, rating: {{rating}}<button  onclick="dh.value='{{_id}}'; dh2.value='{{name}}'"  name="action" class="secondary-content"><i class="material-icons">backspace</i></button></div></li>
+       {{/each }}
+      </ul>
+                     <input name="mom" id="dh" type="hidden">
+                     <input name="mom2" id="dh2" type="hidden">
+
+
+</form>

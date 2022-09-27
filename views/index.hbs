@@ -1,0 +1,94 @@
+ <form action="/" method="POST">
+       <div class="all2">
+              <div class="filter2">
+                   <div>
+                            <label for="date">Када игра: </label>
+                            <input onchange="applyFilters()" type="date" id="date" name="date" />
+                            <div class="btn waves-effect orange darken-1" 
+                                                        onclick="reset()">Сброс говна по трубам
+                                                 </div>
+                     </div>  
+              </div>
+              <div class="events">
+                     <br>
+                     <h4 id="list" name="list">Список событий </h4>
+                     {{#each events}}
+
+
+                     <div class="row">
+                            <div class="col s12 m7">
+                                   <div class="card" style="width: 600px;">
+                                          <div class="card-image" style="background-color: orange ; height: 100px;">
+                                                 <span class="card-title">{{name}}:{{game}}</span>
+
+                                          </div>
+                                          <div class="card-content">
+                                                 <p>{{description}}</p>
+                                                 <br>
+                                                 <label name="startDate">Дата начала {{startDate}}</label>
+                                                 <br>
+                                                 <label name="startTime">Время начала {{startTime}}</label>
+                                          </div>
+                                          <div class="card-action">
+                                                 <button class="btn waves-effect orange darken-1" name="action"
+                                                        onclick="dh.value='{{_id}}'">Записаться
+                                                 </button>
+                                                 <label name="participants" style="margin-left: 60px; width:10px">Участники:
+                                                        {{participants}}/{{maxParticipants}}</label>
+                                                 <div class="myIcons">
+                                                        <div class="butIco">
+                                                               <img class="icon" name="ic1" src="/micON.png"
+                                                                      height="15px" width="15px" alt="0">
+                                                        </div>
+                                                        <div class="butIco">
+                                                               <img class="icon" name="ic2" src="/cam.png" height="20px"
+                                                                      width="20px" alt="0">
+                                                        </div>
+                                                        <div class="butIco">
+                                                               <img class="icon" name="ic3" src="/Vr.png" height="20px"
+                                                                      width="20px" alt="0">
+                                                        </div>
+                                                 </div>
+                                                 <script>
+                                                        a = "{{types}}";
+                                                        z = a.split('');
+                                                        if (z[0] == "1") { document.getElementsByName('ic1')[t].src = "/micOFF.png"; document.getElementsByName('ic1')[t].alt="1"}
+                                                        if (z[1] == "1") { document.getElementsByName('ic2')[t].src = "/noCam.png"; document.getElementsByName('ic2')[t].alt="1" }
+                                                        if (z[2] == "1") { document.getElementsByName('ic3')[t].src = "/NOVr.png"; document.getElementsByName('ic3')[t].alt="1" }
+                                                        t++;
+                                                 </script>
+
+                                          </div>
+                                   </div>
+                            </div>
+                     </div>
+
+
+                     {{/each}}
+                     <input name="mom2" id="dh2" type="hidden" value='{{userIds}}'>
+                     <input name="mom" id="dh" type="hidden">
+
+
+
+</form>
+<script>
+    function applyFilters() {
+       
+       var shiet = document.getElementsByClassName("card-title");
+       var bydlo=document.getElementsByClassName("row");
+       var dates=document.getElementsByName('startDate')
+       for (let i = 0; i<shiet.length; i++){
+              bydlo[i].style = "display: block"
+              var currDate= (date.value+"").split("T")[0];
+              var dataaa=dates[i].textContent.split(" ")[2];
+       if ( dataaa !=currDate)
+       {bydlo[i].style = "display: none"}
+       }
+       }
+       function reset(){
+           var bydlo=document.getElementsByClassName("row");
+            for (let i = 0; i<bydlo.length; i++){
+                bydlo[i].style = "display: block"
+            }
+       }
+</script>

@@ -1,0 +1,35 @@
+
+<form action="/check" method="POST">
+    <h2>Выбор пользователя</h2>
+    <div id="curr">
+        
+    </div>
+            <button class="btn waves-effect orange darken-1" name="action">Отписать </button>
+</form>
+<script>
+     var name = localStorage.getItem("object_name_jopa");
+     var value1 = JSON.parse(name);
+     var curr1=document.getElementById('curr');
+     {{#each events}}
+     if('{{_id}}'==value1){
+         {{#each users}}
+               label = document.createElement('label');
+               label.className='label';
+               curr1.prepend(label);
+               var lab=curr1.getElementsByClassName('label')[0];
+               span = document.createElement('span');
+               span.value = "{{userName}}";
+               span.className="myUser"
+               span.innerHTML = "{{userName}}";
+               lab.prepend(span);
+               input=document.createElement('input');
+               input.type="checkbox";
+               input.checked="checked";
+               lab.prepend(input);              
+         {{/each}}
+     }
+     {{/each}}
+
+console.log(document.getElementsByClassName('label')[0].value)
+                                                       
+</script>

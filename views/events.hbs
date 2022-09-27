@@ -1,0 +1,181 @@
+<script>var a; var z; var t = 0;</script>
+<form action="/events" method="POST">
+       <div class="all">
+              <div class="filter" style="width: 300px;">
+                     <div class="gameName">
+                            <label for="gamename">Название игры</label>
+                            <input id="gameName">
+                     </div>
+                     <div data-role="rangeslider">
+                            <label id="r1" for="rangea">Min: 2</label>
+                            <input type="range" name="rangea" id="rangea" min="2" max="20" value="2">
+                            <label id="r2" for="rangeb">Max: 8</label>
+                            <input type="range" name="rangeb" id="rangeb" min="2" max="20" value="8">
+                     </div>
+                     <div class="myButtons">
+                            <div class="but" onclick="change(this)">
+                                   <img class="icon" id="icon1" src="/micON.png" height="25px" width="25px" alt="0">
+                            </div>
+                            <div class="but" onclick="change2(this)">
+                                   <img class="icon" id="icon2" src="/cam.png" height="30px" width="30px" alt="0">
+                            </div>
+                            <div class="but" onclick="change3(this)">
+                                   <img class="icon" id="icon3" src="/Vr.png" height="30px" width="30px" alt="0">
+                            </div>
+                     </div>
+                     <div>
+                            <label for="date">Када игра: </label>
+                            <input type="date" id="date" name="date" />
+                     </div>
+                     <div>
+                            <label for="date">Када игра: </label>
+                            <input type="time" id="time" name="time" />
+                     </div>
+                     <div class="btn waves-effect orange darken-1"  onclick="applyFilters()">Применить
+                     </div>
+              </div>
+              <div class="events">
+                     <br>
+                     <h4 id="list" name="list">Список событий </h4>
+                     {{#each events}}
+
+
+                     <div class="row">
+                            <div class="col s12 m7">
+                                   <div class="card" style="width: 600px;">
+                                          <div class="card-image" style="background-color: orange ; height: 100px;">
+                                                 <span class="card-title">{{name}}:{{game}}</span>
+
+                                          </div>
+                                          <div class="card-content">
+                                                 <p>{{description}}</p>
+                                                 <br>
+                                                 <label name="startDate">Дата начала {{startDate}}</label>
+                                                 <br>
+                                                 <label name="startTime">Время начала {{startTime}}</label>
+                                          </div>
+                                          <div class="card-action">
+                                                 <button class="btn waves-effect light-blue darken-3" name="action"
+                                                        onclick="dh.value='{{_id}}'">Записаться
+                                                 </button>
+                                                 <label name="participants" style="margin-left: 60px; width:10px">Участники:
+                                                        {{participants}}/{{maxParticipants}}</label>
+                                                 <div class="myIcons">
+                                                        <div class="butIco">
+                                                               <img class="icon" name="ic1" src="/micON.png"
+                                                                      height="15px" width="15px" alt="0">
+                                                        </div>
+                                                        <div class="butIco">
+                                                               <img class="icon" name="ic2" src="/cam.png" height="20px"
+                                                                      width="20px" alt="0">
+                                                        </div>
+                                                        <div class="butIco">
+                                                               <img class="icon" name="ic3" src="/Vr.png" height="20px"
+                                                                      width="20px" alt="0">
+                                                        </div>
+                                                 </div>
+                                                 <script>
+                                                        a = "{{types}}";
+                                                        z = a.split('');
+                                                        if (z[0] == "1") { document.getElementsByName('ic1')[t].src = "/micOFF.png"; document.getElementsByName('ic1')[t].alt="1"}
+                                                        if (z[1] == "1") { document.getElementsByName('ic2')[t].src = "/noCam.png"; document.getElementsByName('ic2')[t].alt="1" }
+                                                        if (z[2] == "1") { document.getElementsByName('ic3')[t].src = "/NOVr.png"; document.getElementsByName('ic3')[t].alt="1" }
+                                                        t++;
+                                                 </script>
+
+                                          </div>
+                                   </div>
+                            </div>
+                     </div>
+
+
+                     {{/each}}
+                     <input name="mom2" id="dh2" type="hidden" value='{{userIds}}'>
+                     <input name="mom" id="dh" type="hidden">
+
+
+
+</form>
+<script>
+
+       function change(obj) {
+              let img1 = obj.getElementsByClassName('icon')[0];
+              obj.style.backgroundColor = "red"
+              if (img1.alt == "0") {
+                     img1.src = "/micOFF.png"; img1.alt = "1"
+              }
+              else {
+                     img1.src = "/micON.png";
+                     obj.style.backgroundColor = "#fb8c00"; img1.alt = "0"
+              }
+
+       }
+       function change2(obj) {
+              let img1 = obj.getElementsByClassName('icon')[0];
+              obj.style.backgroundColor = "red"
+              if (img1.alt == "0") {
+                     img1.src = "/noCam.png"; img1.alt = "1"
+              }
+              else {
+                     img1.src = "/cam.png";
+                     obj.style.backgroundColor = "#fb8c00"; img1.alt = "0"
+              }
+
+       }
+       function change3(obj) {
+              let img1 = obj.getElementsByClassName('icon')[0];
+              obj.style.backgroundColor = "red"
+              if (img1.alt == "0") {
+                     img1.src = "/NOVr.png"; img1.alt = "1"
+              }
+              else {
+                     img1.src = "/Vr.png";
+                     obj.style.backgroundColor = "#fb8c00"; img1.alt = "0"
+              }
+
+       }
+       const sliders = document.querySelectorAll('input[type="range"]');
+
+       sliders[0].addEventListener('input', (e) => {
+              r1.textContent = "Min: " + sliders[0].value
+              if (+sliders[0].value > +sliders[1].value) {
+                     sliders[0].value = sliders[1].value;
+                     r1.textContent = "Min: " + sliders[1].value
+              }
+       });
+
+       sliders[1].addEventListener('input', (e) => {
+              r2.textContent = "Max: " + sliders[1].value
+              if (+sliders[1].value < +sliders[0].value) {
+                     sliders[1].value = sliders[0].value;
+                     r2.textContent = "Max: " + sliders[0].value
+              }
+       });
+
+       sliders.forEach((slider) => {
+              slider.addEventListener('change', () => {
+
+              })
+       });
+
+       function applyFilters() {
+       
+       var shiet = document.getElementsByClassName("card-title");
+       var bydlo=document.getElementsByClassName("row");
+       var participants= document.getElementsByName("participants")
+       var dates=document.getElementsByName('startDate')
+       var key = icon1.alt+icon2.alt+icon3.alt;
+       var times = document.getElementsByName("startTime")
+       for (let i = 0; i<shiet.length; i++){
+              bydlo[i].style = "display: block"
+              var gavno=shiet[i].textContent.split(":")[1];
+              var key2=document.getElementsByName('ic1')[i].alt+document.getElementsByName('ic2')[i].alt+document.getElementsByName('ic3')[i].alt;
+              var currParticipants = +participants[i].textContent.split("/")[1]
+              var currTime= times[i].textContent.split(" ")[2];
+              var currDate= (date.value+"").split("T")[0];
+              var dataaa=dates[i].textContent.split(" ")[2];
+       if (gavno != gameName.value || key!=key2 || currParticipants<rangea.value || currParticipants>rangeb.value || time.value!=currTime || dataaa !=currDate)
+       {bydlo[i].style = "display: none"}
+       }
+       }
+</script>

@@ -1,0 +1,78 @@
+
+<form action="/result" method="POST">    
+    <div class="row">
+    <div class="col s12 m6">
+      <div class="card" >
+        <div class="card-image">
+          <img src="https://img.wallpapersafari.com/desktop/1440/900/66/72/NpY6Uq.jpg" height="200px" alt="JavaScript test"/>
+          <span class="card-title" id="dd">Card Title</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red" type="submit"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+          <p id="text">I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn waves-effect cyan darken-1" type="submit" name="action">Submit </button>
+        <input type="hidden" name="group1" id="group1" value="r" ></input>
+          <input type="hidden" name="name1" id="name1" value="0" ></input>
+          <input  type="hidden" name="numberX" id="numberX" value="5" ></input>
+          <input  type="hidden" name="roleX" id="roleX" value="8" ></input>
+</form>
+<script>
+        var name2 = localStorage.getItem("object_name3");
+        var valueV = JSON.parse(name2);
+        var imgX;
+        switch(valueV){
+            case 0:
+            document.getElementById('dd').innerHTML ="Вы предсдатель";
+            document.getElementById('text').innerHTML =  "Председатель (координатор) - для данной роли характерно доминирование и преданность групповым целям.  Председатель умеет четко формулировать цели, делегирует полномочия и продвигает удачные идеи. Эффективное распределение ресурсов позволяет быстро продвигаться к намеченной цели. Человек с данной ролью склонен доверять людям. Черты характера: уверенность, спокойствие, самодисциплина, собранность. Председатель трезво оценивает каждого члена команды, его сильные и слабые стороны. Такой человек хорошо адаптируется при общении с людьми, при этом способен принимать самостоятельные решения, основанные на оценке текущей ситуации.";
+            imgX="https://cdn-icons-png.flaticon.com/128/3004/3004038.png";
+            break;
+            case 1:
+            document.getElementById('dd').innerHTML ="Вы формирователь";
+            document.getElementById('text').innerHTML = "Формирователь (приводящий в действие) - лидер с данной ролью особенно полезен в команде, которая склонна к медленной работе над проектом и бездействию.  Своими активными действиями и мотивацией формирователь побуждает команду к активным действиям. Его энергия и смелость позволяют команде преодолевать трудности, однако в отличие от председателя формирователь предпочитает работать в одиночку. Черты характера: склонность к раздражению и нетерпению, нелюбовь к проигрышам, подозрительность к людям, общительность. Как лидеры они хороши в сработанных командах, которые в процессе работы сталкиваются со всевозможными трудностями.";
+            imgX="https://cdn-icons-png.flaticon.com/128/4511/4511885.png";
+            break;
+            case 2:
+            document.getElementById('dd').innerHTML ="Вы мыслитель";
+            document.getElementById('text').innerHTML = "Мыслитель- этот человек в команде отвечает за генерацию новых идей. Такие люди чаще всего предпочитают работать в одиночку, поэтому зачастую не слишком коммуникабельны. Зато мыслители обладают высоким уровнем интеллекта и креативности. Черты характера: прямота в том числе и в общении, замкнутость, склонность игнорировать правила.";
+            imgX="https://cdn-icons-png.flaticon.com/128/3004/3004166.png";
+            break;
+            case 3:
+            document.getElementById('dd').innerHTML ="Вы оценщик";
+            document.getElementById('text').innerHTML = "Оценщик - этот человек в команде отвечает за принятие решений. Оценщик защищает команду от необдуманных импульсивных поступков, так как перед принятием решений тщательно и хладнокровно анализирует ситуацию с разных сторон. Представители этой роли обладают высоким уровнем интеллекта и показателями критического мышления, что позволяет выдвигать сильные аргументы. Черты характера: рассудительность, проницательность, хладнокровность, медлительность.";
+            imgX="https://cdn-icons-png.flaticon.com/128/4511/4511928.png";
+            break;
+            case 4:
+            document.getElementById('dd').innerHTML ="Вы исполнитель";
+            document.getElementById('text').innerHTML = "Исполнитель - основным качеством данной роли является дисциплинированность. Исполнители четко понимают поставленные перед ними задачи, и все их действия зачастую направлены не на получение собственной выгоды, а на достижение командных целей. У исполнителей отлично получается строить планы и следовать им. Они становятся эффективными и надежными организаторами. Черты характера: консервативность, дисциплинированность, надежность.";
+            imgX="https://cdn-icons.flaticon.com/png/128/3150/premium/3150632.png?token=exp=1645705931~hmac=644c54bc129441aae371eef8843dc8d5";
+            break;
+            case 5:
+            document.getElementById('dd').innerHTML ="Вы разведчик";
+            document.getElementById('text').innerHTML = "Разведчик (исследователь ресурсов)- как и у мыслителя основная задача в команде генерация новых идей, однако Разведчик более общителен и зачастую создает новые идеи собирая и преобразовывая идеи других членов команды. Используя, навыки коммуникации он создает сеть знакомств, а затем получает через нее данные и ресурсы. Основные качества: общительность, любознательность, социальная ориентированность. При правильном разграничении области интересов мыслитель и разведчик могут эффективно работать вместе.";
+            imgX="https://cdn-icons-png.flaticon.com/128/6314/6314064.png";
+            break;
+            case 6:
+            document.getElementById('dd').innerHTML ="Вы коллективист";
+            document.getElementById('text').innerHTML = "Коллективист - этот человек в команде отвечает за урегулирование внутренних конфликтов. Обладая мягким характером, коллективист может оказать благоприятное воздействие на людей с трудным характером. Ему свойственно проявление чувствительности как к отдельным членам группы, так и к команде в целом. В моменты кризиса Коллективист может действовать нерешительно, однако дипломатичность, мягкость и восприимчивость делают его важным членом команды и хорошим наставником для новичков.";
+            imgX="https://cdn-icons-png.flaticon.com/128/6314/6314229.png";
+            break;
+            case 7:
+            document.getElementById('dd').innerHTML ="Вы доводчик";
+            document.getElementById('text').innerHTML = "Доводчик - человек, который старается довести до конца любое дело. В команде такой человек следит за сроками выполнения плана, отслеживает, чтобы все запланированные дела были закончены. Умение держать все в голове и не упускать детали позволяет выполнять все поставленные задачи. Однако иногда такие люди тратят много сил в попытках достижения слишком сложных целей. Черты характера: старательность, добросовестность, консервативность.";
+            imgX="https://cdn-icons.flaticon.com/png/128/6197/premium/6197387.png?token=exp=1645705712~hmac=6ccb1f522ca3dbbc993be66ee86ebc03";
+            break;
+        }
+        var name2 = localStorage.getItem("object_name7");
+        var value1 = JSON.parse(name2).group;
+        console.log(value1);
+        var value2 = JSON.parse(name2).name;
+        var value3 = JSON.parse(name2).number;
+        group1.value=value1;
+        name1.value=value2;
+        numberX.value=value3;       
+        roleX.value=imgX;      
+    </script>

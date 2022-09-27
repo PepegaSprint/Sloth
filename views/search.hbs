@@ -1,0 +1,38 @@
+ <form action="/search" method="POST">
+    <br>
+            <label for="searchName">Поиск</label>
+        <input id="searchName" name="searchName"></input>
+        <br>
+        <br>
+        <br>
+ <button class="btn waves-effect orange darken-1" name="action"> Найти
+            </button>
+     <h4 id="list" name="list">Список моих событий </h4>
+<div class="new" style="display: inline; width:50%" {{#each myevents}}>
+                 
+      <h5>{{name}}</h5>
+      <br>
+
+
+       <label >{{game}}</label>
+      <br>
+       <label >{{types}}</label>
+      <br>
+       <label >Дата начала {{startDate}}</label>
+      <br>
+       <label >Время начала {{startTime}}</label>
+        <br>
+               <label>Количество участников {{participants}}</label>
+      <br>
+             <label >Максимальное количество участников {{maxParticipants}}</label>
+      <br>
+             <label >{{description}}</label>
+      <br>
+         <button class="btn waves-effect orange darken-1" name="action" onclick="dh.value='{{_id}}'" > Отписаться
+            </button>
+            <br>
+            <br>
+        </div {{/each}}>
+        <input name="mom2" id="dh2" type="hidden" value= '{{userIds}}'>
+        <input name="mom" id="dh" type="hidden">
+</form>

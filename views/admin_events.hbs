@@ -1,0 +1,94 @@
+<script>var a; var z; var t = 0;</script>
+ <form action="/admin_events" method="POST">
+    <br>
+
+
+              <div class="events">
+                     <br>
+                     <h4 id="list" name="list">Список событий </h4>
+                     <input name="isDelete" id="isDelete" type="hidden" value='0'>
+                      <input name="selectedUser" id="selectedUser" type="hidden" value='0'>
+                     {{#each events}}
+                     <div class="row" name="5">
+                            <div class="col s12 m7">
+                                   <div class="card" style="width: 600px;">
+                                          <div class="card-image" style="background-color: orange ; height: 100px;">
+                                                 <span class="card-title">{{name}}:{{game}}</span>
+                                                 <button  name="action" onclick="selectedUser.value='{{_id}}'; isDelete.value='1'" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">close</i></button>
+                                                
+                                          </div>
+                                          <div class="card-content">
+                                                 <p>{{description}}</p>
+                                                 <br>
+                                                 <label name="startDate">Дата начала {{startDate}}</label>
+                                                 <br>
+                                                 <label name="startTime">Время начала {{startTime}}</label>
+                                          </div>
+                                          <div class="card-action">                                                       
+                                                 </button>
+                                                 <label name="participants" style="margin-left: 60px; width:10px">Участники:
+                                                        {{participants}}/{{maxParticipants}}</label>
+                                                 <div class="myIcons">
+                                                        <div class="butIco">
+                                                               <img class="icon" name="ic1" src="/micON.png"
+                                                                      height="15px" width="15px" alt="0">
+                                                        </div>
+                                                        <div class="butIco">
+                                                               <img class="icon" name="ic2" src="/cam.png" height="20px"
+                                                                      width="20px" alt="0">
+                                                        </div>
+                                                        <div class="butIco">
+                                                               <img class="icon" name="ic3" src="/Vr.png" height="20px"
+                                                                      width="20px" alt="0">
+                                                        </div>
+                                                 </div>
+                                                 <script>
+                                                        a = "{{types}}";
+                                                        
+                                                        z = a.split('');
+                                                        if (z[0] == "1") { document.getElementsByName('ic1')[t].src = "/micOFF.png"; document.getElementsByName('ic1')[t].alt="1"}
+                                                        if (z[1] == "1") { document.getElementsByName('ic2')[t].src = "/noCam.png"; document.getElementsByName('ic2')[t].alt="1" }
+                                                        if (z[2] == "1") { document.getElementsByName('ic3')[t].src = "/NOVr.png"; document.getElementsByName('ic3')[t].alt="1" }
+                                                        t++;
+                                                 </script>
+
+                                          </div>
+                                            
+                                           <ul class="collection with-header" name="hhop">
+        <li class="collection-header" value=""><h6>Список участников</h6></li>
+      {{#each users}}
+        <li class="collection-item"><div>{{userName}}<button class="165"  onclick= "  usrId.value= this.className ; uLV.value='{{userName}}' ;"  name="action" class="secondary-content"><i class="material-icons">backspace</i></button></div></li>
+       {{/each }}
+      </ul>
+      <script>
+                            var f=document.getElementsByClassName('row');
+                            var d=f[t-1].getElementsByClassName('165');
+                            var y=0;
+                            for(let i=0;i<d.length+y;i++){
+                                    console.log(i +'i')
+                                   d[i-y].className=t-1;
+                                   y++;
+                                   console.log(d.length);
+                                  
+                            }
+      </script>
+      
+                                   </div>
+                            </div>
+                     </div>
+<input name="mom" id="dh" type="hidden" value="{{_id}}">
+
+
+                     {{/each}}
+                     <input name="userListValue" id="uLV" type="hidden">
+                     <input name="userIdValue" id="usrId" type="hidden">
+                     
+
+</form>
+<script>
+       function relocate(obj){
+        localStorage.setItem("object_name_jopa", JSON.stringify(obj))
+
+       document.location.href="/check";    
+       }
+</script>
