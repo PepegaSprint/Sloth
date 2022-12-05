@@ -21,7 +21,7 @@ app.use(DbRoute)
 
 async function start(){
     try{
-        await mongoose.connect('mongodb+srv://Vovan:Hq7WfpP6f4GhkM4k@projectcluster.x6lxz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
+        await mongoose.connect('CONNSTRING',{
           useNewUrlParser:true,
           useUnifiedTopology: true 
        })
